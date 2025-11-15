@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/run/vlmcsd.pid"
+command="/usr/bin/vlmcsd"
+command_args="-i /etc/vlmcsd/vlmcsd.ini -D -p ${pidfile} ${OPTIONS}"
+command_user="${VLMCSD_USER:-vlmcsd}:${VLMCSD_GROUP:-vlmcsd}"
+start_stop_daemon_args="-e HOME= -e XDG_CONFIG_HOME="
+command_background="yes"
+
+depend() {
+	use net logger
+}

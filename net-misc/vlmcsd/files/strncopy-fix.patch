@@ -1,0 +1,42 @@
+diff '--color=auto' -Nudr vlmcsd-svn1113-orig/src/helpers.c vlmcsd-svn1113/src/helpers.c
+--- vlmcsd-svn1113-orig/src/helpers.c	2020-03-30 05:21:09.000000000 +0000
++++ vlmcsd-svn1113/src/helpers.c	2025-03-31 21:55:00.909880373 +0000
+@@ -215,7 +215,7 @@
+ 	}
+ 
+ 	char inputCopy[GUID_STRING_LENGTH + 1];
+-	strncpy(inputCopy, input, GUID_STRING_LENGTH + 1);
++	strncpy(inputCopy, input, GUID_STRING_LENGTH + 1 - 1);
+ 	inputCopy[8] = inputCopy[13] = inputCopy[18] = 0;
+ 
+ 	hex2bin((BYTE*)&guid->Data1, inputCopy, 8);
+@@ -524,7 +524,7 @@
+ {
+ 	char fileName[MAX_PATH];
+ 	getExeName();
+-	strncpy(fileName, fn_exe, MAX_PATH);
++	strncpy(fileName, fn_exe, MAX_PATH-1);
+ 	PathRemoveFileSpec(fileName);
+ 	strncat(fileName, "\\vlmcsd.kmd", MAX_PATH - 11);
+ 	fn_data = vlmcsd_strdup(fileName);
+@@ -542,7 +542,7 @@
+ 	}
+ 
+ 	char* fn_exe_copy = vlmcsd_strdup(fn_exe);
+-	strncpy(fileName, dirname(fn_exe_copy), 512);
++	strncpy(fileName, dirname(fn_exe_copy), sizeof(fileName) - 1);
+ 	free(fn_exe_copy);
+ 	strncat(fileName, "/vlmcsd.kmd", 500);
+ 	fn_data = vlmcsd_strdup(fileName);
+diff '--color=auto' -Nudr vlmcsd-svn1113-orig/src/vlmcs.c vlmcsd-svn1113/src/vlmcs.c
+--- vlmcsd-svn1113-orig/src/vlmcs.c	2020-03-30 05:21:09.000000000 +0000
++++ vlmcsd-svn1113/src/vlmcs.c	2025-03-31 21:54:07.623214712 +0000
+@@ -796,7 +796,7 @@
+ 			*serverlist = (kms_server_dns_ptr)vlmcsd_malloc(sizeof(kms_server_dns_t));
+ 
+ 			numServers = 1;
+-			strncpy((*serverlist)->serverName, RemoteAddr, sizeof((*serverlist)->serverName));
++			strncpy((*serverlist)->serverName, RemoteAddr, sizeof((*serverlist)->serverName)-1);
+ 		}
+ 	}
+ 

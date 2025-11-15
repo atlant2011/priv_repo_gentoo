@@ -1,0 +1,27 @@
+From d400b4aa6c241db28b3de210dbf661aa304c908e Mon Sep 17 00:00:00 2001
+From: Melvin Yam <4566909+yammelvin@users.noreply.github.com>
+Date: Wed, 18 Sep 2024 04:34:25 +0800
+Subject: [PATCH] fix dangling pointer
+
+---
+ src/kms.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/kms.c b/src/kms.c
+index 9e31a724..46a49fc5 100644
+--- a/src/kms.c
++++ b/src/kms.c
+@@ -465,12 +465,12 @@ static void getEpid(RESPONSE *const baseResponse, const char** EpidSource, const
+ {
+ #if !defined(NO_RANDOM_EPID) || !defined(NO_CL_PIDS) || !defined(NO_INI_FILE)
+ 	const char* pid;
++	char ePid[PID_BUFFER_SIZE];
+ 	if (KmsResponseParameters[index].Epid == NULL)
+ 	{
+ #ifndef NO_RANDOM_EPID
+ 		if (RandomizationLevel == 2)
+ 		{
+-			char ePid[PID_BUFFER_SIZE];
+ 			generateRandomPid(index, ePid, Lcid, HostBuild);
+ 			pid = ePid;
+ 

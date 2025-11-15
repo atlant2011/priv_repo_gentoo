@@ -1,0 +1,64 @@
+From 5ba3309448defd90a4e29f7f50a885c7e70caa86 Mon Sep 17 00:00:00 2001
+From: Linux User <milkingthelolcow@protonmail.com>
+Date: Fri, 1 Oct 2021 13:15:25 +0000
+Subject: [PATCH] Let number of jobs be user-configurable
+
+j16 is an awful lot of jobs and usually results in termination of the compiler.
+The number of jobs used by make can be set using the command line argument -jN
+to make, where N is the number of jobs
+---
+ GNUmakefile | 20 +++++++++-----------
+ 1 file changed, 9 insertions(+), 11 deletions(-)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index d3b90aa2..e6cb9aa5 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -1,7 +1,5 @@
+ .NOTPARALLEL:
+ 
+-MAX_THREADS ?= 16
+-
+ PROGRAM_NAME ?= bin/vlmcsd
+ CLIENT_NAME ?= bin/vlmcs
+ MULTI_NAME ?= bin/vlmcsdmulti
+@@ -104,30 +102,30 @@ endif
+ 
+ .DEFAULT:
+ 	+@(test -d bin || mkdir bin) & (test -d lib || mkdir lib) & (test -d build || mkdir build)
+-	+@$(MAKE) -j$(MAX_THREADS) -C src $@ FROM_PARENT=1 PROGRAM_NAME=$(PROGRAM_NAME) CLIENT_NAME=$(CLIENT_NAME) MULTI_NAME=$(MULTI_NAME) DLL_NAME=$(DLL_NAME) A_NAME=$(A_NAME)
++	+@$(MAKE)  -C src $@ FROM_PARENT=1 PROGRAM_NAME=$(PROGRAM_NAME) CLIENT_NAME=$(CLIENT_NAME) MULTI_NAME=$(MULTI_NAME) DLL_NAME=$(DLL_NAME) A_NAME=$(A_NAME)
+ 
+ all:
+ 	+@(test -d bin || mkdir bin) & (test -d lib || mkdir lib) & (test -d build || mkdir build)
+-	+@$(MAKE) -j$(MAX_THREADS) -C src $@ FROM_PARENT=1 PROGRAM_NAME=$(PROGRAM_NAME) CLIENT_NAME=$(CLIENT_NAME) MULTI_NAME=$(MULTI_NAME) DLL_NAME=$(DLL_NAME) A_NAME=$(A_NAME)
++	+@$(MAKE)  -C src $@ FROM_PARENT=1 PROGRAM_NAME=$(PROGRAM_NAME) CLIENT_NAME=$(CLIENT_NAME) MULTI_NAME=$(MULTI_NAME) DLL_NAME=$(DLL_NAME) A_NAME=$(A_NAME)
+ 
+ clean:
+-	+@$(MAKE) -j$(MAX_THREADS) -C src $@ FROM_PARENT=1 PROGRAM_NAME=$(PROGRAM_NAME) CLIENT_NAME=$(CLIENT_NAME) MULTI_NAME=$(MULTI_NAME) DLL_NAME=$(DLL_NAME) A_NAME=$(A_NAME)
+-	+@$(MAKE) -j$(MAX_THREADS) -C man $@
++	+@$(MAKE)  -C src $@ FROM_PARENT=1 PROGRAM_NAME=$(PROGRAM_NAME) CLIENT_NAME=$(CLIENT_NAME) MULTI_NAME=$(MULTI_NAME) DLL_NAME=$(DLL_NAME) A_NAME=$(A_NAME)
++	+@$(MAKE)  -C man $@
+ 
+ alldocs:
+-	+@$(MAKE) -j$(MAX_THREADS) -C man $@
++	+@$(MAKE)  -C man $@
+ 
+ dosdocs:
+-	+@$(MAKE) -j$(MAX_THREADS) -C man $@
++	+@$(MAKE)  -C man $@
+ 
+ unixdocs:
+-	+@$(MAKE) -j$(MAX_THREADS) -C man $@
++	+@$(MAKE)  -C man $@
+ 
+ htmldocs:
+-	+@$(MAKE) -j$(MAX_THREADS) -C man $@
++	+@$(MAKE)  -C man $@
+ 
+ pdfdocs:
+-	+@$(MAKE) -j$(MAX_THREADS) -C man $@
++	+@$(MAKE)  -C man $@
+ 
+ GNUmakefile:
+ 
