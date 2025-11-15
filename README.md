@@ -1,2 +1,3 @@
 # priv_repo_gentoo
-private overlay for gentoo
+My overlay for gentoo
+May be unstable ebuild's
