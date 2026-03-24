@@ -1,0 +1,12 @@
+diff '--color=auto' -Nudr tora-9999-orig/src/tools/toscript.cpp tora-9999/src/tools/toscript.cpp
+--- tora-9999-orig/src/tools/toscript.cpp	2026-03-23 15:57:36.009801879 +0700
++++ tora-9999/src/tools/toscript.cpp	2026-03-23 15:57:59.618459924 +0700
+@@ -51,7 +51,7 @@
+ #include <QtCore/QDir>
+ #include <QFileDialog>
+ #include <QCompleter>
+-#include <QFilesystemModel>
++#include <QFileSystemModel>
+ #include <QRegularExpression>
+ #include <QtCore/QSettings>
+ #include <QSplitter>

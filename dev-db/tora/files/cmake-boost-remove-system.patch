@@ -1,0 +1,12 @@
+diff '--color=auto' -Nudr tora-9999-orig/CMakeLists.txt tora-9999/CMakeLists.txt
+--- tora-9999-orig/CMakeLists.txt	2026-03-18 12:11:23.616207441 +0700
++++ tora-9999/CMakeLists.txt	2026-03-18 12:16:17.828930508 +0700
+@@ -105,7 +105,7 @@
+ ELSEIF(APPLE)
+   FIND_PACKAGE(Boost 1.48.0 REQUIRED)
+ ELSE()
+-  FIND_PACKAGE(Boost 1.48.0 REQUIRED system)
++  FIND_PACKAGE(Boost 1.48.0 REQUIRED)
+ ENDIF()
+ 
+ IF (Boost_FOUND)

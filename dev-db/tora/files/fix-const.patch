@@ -1,0 +1,49 @@
+diff '--color=auto' -Nudr tora-9999-orig/extlibs/libantlr3cpp-3.5.3/include/antlr3cyclicdfa.hpp tora-9999/extlibs/libantlr3cpp-3.5.3/include/antlr3cyclicdfa.hpp
+--- tora-9999-orig/extlibs/libantlr3cpp-3.5.3/include/antlr3cyclicdfa.hpp	2025-04-10 12:03:37.739332390 +0700
++++ tora-9999/extlibs/libantlr3cpp-3.5.3/include/antlr3cyclicdfa.hpp	2025-04-10 12:12:01.319327558 +0700
+@@ -52,18 +52,18 @@
+     /// Decision number that a particular static structure
+     ///  represents.
+     ///
+-    const ANTLR_INT32		m_decisionNumber;
++    ANTLR_INT32		m_decisionNumber;
+ 
+     /// What this decision represents
+     ///
+     const ANTLR_UCHAR*			m_description;
+-	const ANTLR_INT32* const	m_eot;
+-    const ANTLR_INT32* const	m_eof;
+-    const ANTLR_INT32* const	m_min;
+-    const ANTLR_INT32* const	m_max;
+-    const ANTLR_INT32* const	m_accept;
+-    const ANTLR_INT32* const	m_special;
+-    const ANTLR_INT32* const *const	m_transition;
++	const ANTLR_INT32*	m_eot;
++    const ANTLR_INT32*	m_eof;
++    const ANTLR_INT32*	m_min;
++    const ANTLR_INT32*	m_max;
++    const ANTLR_INT32*	m_accept;
++    const ANTLR_INT32*	m_special;
++    const ANTLR_INT32* const *	m_transition;
+ 
+ public:
+ 	CyclicDFA( ANTLR_INT32	decisionNumber
+diff '--color=auto' -Nudr tora-9999-orig/extlibs/libantlr3cpp-3.5.3/include/antlr3memory.hpp tora-9999/extlibs/libantlr3cpp-3.5.3/include/antlr3memory.hpp
+--- tora-9999-orig/extlibs/libantlr3cpp-3.5.3/include/antlr3memory.hpp	2025-04-10 12:03:37.739332390 +0700
++++ tora-9999/extlibs/libantlr3cpp-3.5.3/include/antlr3memory.hpp	2025-04-10 12:13:08.049326917 +0700
+@@ -90,13 +90,13 @@
+ 
+ 	template<class KeyType, class ValueType>
+ 	class UnOrderedMapType : public std::map< KeyType, ValueType, std::less<KeyType>, 
+-										AllocatorType<std::pair<KeyType, ValueType> > >
++										AllocatorType<std::pair<const KeyType, ValueType> > >
+ 	{
+ 	};
+ 
+ 	template<class KeyType, class ValueType>
+ 	class OrderedMapType : public std::map< KeyType, ValueType, std::less<KeyType>, 
+-										AllocatorType<std::pair<KeyType, ValueType> > >
++										AllocatorType<std::pair<const KeyType, ValueType> > >
+ 	{
+ 	};
+ 

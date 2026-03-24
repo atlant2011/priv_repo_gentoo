@@ -1,0 +1,14 @@
+diff '--color=auto' -Nudr tora-9999-orig/src/widgets/toscintilla.cpp tora-9999/src/widgets/toscintilla.cpp
+--- tora-9999-orig/src/widgets/toscintilla.cpp	2026-03-23 13:03:09.781565939 +0700
++++ tora-9999/src/widgets/toscintilla.cpp	2026-03-23 13:06:05.356203533 +0700
+@@ -223,7 +223,9 @@
+         return false;
+     char *buf = new char[word_len + 1];
+     SendScintilla(SCI_GETTEXTRANGE, t.wordStart, t.wordEnd, buf);
+-    QString word = bytesAsText(buf);
++//    QString word = bytesAsText(buf); // unused. It's defined as "protected" at owner owner class.
++//  Replace to standart function from Qt
++    QString word = QString::fromUtf8(buf);
+     delete[] buf;
+ 
+     QToolTip::showText(t.globalPos, word, viewport(), t.rect);
