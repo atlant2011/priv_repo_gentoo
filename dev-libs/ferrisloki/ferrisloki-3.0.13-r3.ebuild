@@ -20,6 +20,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.13-r3-configure-libsigc.patch
 	"${FILESDIR}"/${PN}-3.0.13-r3-c++17.compatible.patch
+	"${FILESDIR}"/${PN}-3.0.13-r3-comment-dead-code.patch
 )
 
 src_prepare() {

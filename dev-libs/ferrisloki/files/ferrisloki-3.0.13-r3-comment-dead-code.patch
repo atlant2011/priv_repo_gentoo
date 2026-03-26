@@ -1,0 +1,19 @@
+diff '--color=auto' -Nudr ferrisloki-3.0.13-orig/include/FerrisLoki/loki/SafeFormat.h ferrisloki-3.0.13/include/FerrisLoki/loki/SafeFormat.h
+--- ferrisloki-3.0.13-orig/include/FerrisLoki/loki/SafeFormat.h	2008-05-25 05:31:06.000000000 +0800
++++ ferrisloki-3.0.13/include/FerrisLoki/loki/SafeFormat.h	2026-03-26 10:12:51.675864809 +0700
+@@ -195,6 +195,7 @@
+             return operator()(stdstr.c_str());
+         }
+ 
++/*
+         PrintfState& operator()(const char *const s) {
+             if (result_ == -1) return *this;
+             ReadLeaders();
+@@ -222,6 +223,7 @@
+             Next();
+             return *this;
+         }
++*/
+         
+         PrintfState& operator()(const void *const p) {
+             return (*this)(reinterpret_cast<LOKI_SAFEFORMAT_UNSIGNED_LONG>(p));
