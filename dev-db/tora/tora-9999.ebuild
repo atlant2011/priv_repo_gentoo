@@ -35,14 +35,14 @@ DEPEND="
 	${RDEPEND}
 "
 PATCHES=(
-        "${FILESDIR}"/fix-gcc-14.patch
-# next series patch exist in PR https://github.com/tora-tool/tora/pull/168. After accept PR, it's need remove.
-        "${FILESDIR}"/append-qscintilla-for-qt6.patch
-        "${FILESDIR}"/rewrite-c++17-compatible.patch
-        "${FILESDIR}"/cmake-boost-remove-system.patch
-        "${FILESDIR}"/fix-capitalize-char.patch
-        "${FILESDIR}"/moved-SkipEmptyParts-to-qt.patch
-        "${FILESDIR}"/use-qt-function.patch
+# NOT REQUIRED. Pull request merged. https://github.com/tora-tool/tora/pull/168
+#        "${FILESDIR}"/fix-gcc-14.patch
+#        "${FILESDIR}"/append-qscintilla-for-qt6.patch
+#        "${FILESDIR}"/rewrite-c++17-compatible.patch
+#        "${FILESDIR}"/cmake-boost-remove-system.patch
+#        "${FILESDIR}"/fix-capitalize-char.patch
+#        "${FILESDIR}"/moved-SkipEmptyParts-to-qt.patch
+#        "${FILESDIR}"/use-qt-function.patch
 )
 
 
